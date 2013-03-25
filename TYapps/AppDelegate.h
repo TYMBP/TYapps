@@ -1,14 +1,8 @@
-//
-//  AppDelegate.h
-//  TYapps
-//
-//  Created by Tomohiko Yamada on 2013/03/26.
-//  Copyright (c) 2013年 yamatomo. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : NSObject <UIApplicationDelegate> {
+    UIWindow *window;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

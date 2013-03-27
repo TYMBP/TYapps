@@ -16,6 +16,7 @@
 		101EFF311700ACCA00D39FA7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 101EFF301700ACCA00D39FA7 /* Default.png */; };
 		101EFF331700ACCA00D39FA7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 101EFF321700ACCA00D39FA7 /* Default@2x.png */; };
 		101EFF351700ACCA00D39FA7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 101EFF341700ACCA00D39FA7 /* Default-568h@2x.png */; };
+		5A0FEBD61702E3DD0015DD9C /* MViewControllerB.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0FEBD51702E3DD0015DD9C /* MViewControllerB.m */; };
 		5A631D8A17018ED20054C84C /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A631D8917018ED20054C84C /* background.png */; };
 		5A631D8C170193220054C84C /* logoImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A631D8B170193220054C84C /* logoImage.png */; };
 		5AFB90C11701480100299427 /* MViewControllerA.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB90C01701480100299427 /* MViewControllerA.m */; };
@@ -35,6 +36,8 @@
 		101EFF301700ACCA00D39FA7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		101EFF321700ACCA00D39FA7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		101EFF341700ACCA00D39FA7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5A0FEBD41702E3DD0015DD9C /* MViewControllerB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MViewControllerB.h; sourceTree = "<group>"; };
+		5A0FEBD51702E3DD0015DD9C /* MViewControllerB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MViewControllerB.m; sourceTree = "<group>"; };
 		5A631D8917018ED20054C84C /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		5A631D8B170193220054C84C /* logoImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoImage.png; sourceTree = "<group>"; };
 		5AFB90BF1701480100299427 /* MViewControllerA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MViewControllerA.h; sourceTree = "<group>"; };
@@ -91,6 +94,8 @@
 				101EFF251700ACCA00D39FA7 /* Supporting Files */,
 				5AFB90BF1701480100299427 /* MViewControllerA.h */,
 				5AFB90C01701480100299427 /* MViewControllerA.m */,
+				5A0FEBD41702E3DD0015DD9C /* MViewControllerB.h */,
+				5A0FEBD51702E3DD0015DD9C /* MViewControllerB.m */,
 			);
 			path = TYapps;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				101EFF2B1700ACCA00D39FA7 /* main.m in Sources */,
 				101EFF2F1700ACCA00D39FA7 /* AppDelegate.m in Sources */,
 				5AFB90C11701480100299427 /* MViewControllerA.m in Sources */,
+				5A0FEBD61702E3DD0015DD9C /* MViewControllerB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

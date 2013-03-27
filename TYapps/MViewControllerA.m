@@ -11,6 +11,19 @@
     UIImageView *logo = [[UIImageView alloc] initWithImage:logoImage];
     //UILabel* label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)]autorelease];
     UILabel* label2 = [[[UILabel alloc] initWithFrame:CGRectZero]autorelease];
+   
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button setTitle:@"login" forState:UIControlStateNormal];
+    [button sizeToFit];
+    CGPoint newPoint = self.view.center;
+    newPoint.y += 50;
+    button.center = newPoint;
+    button.autoresizingMask =
+    UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    [button addTarget:self
+               action:@selector(buttonDidPush)
+     forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
     
     //label.text = @"Test Test";
     label2.frame = CGRectMake(0, 0, 100, 100);
@@ -35,10 +48,9 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)buttonDidPush {
+    [self.view.window sendSubviewToBack:self.view];
 }
+
 
 @end

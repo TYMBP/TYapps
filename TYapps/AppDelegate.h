@@ -1,9 +1,12 @@
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *_window;
+    UIWindow *window;
+    UIViewController* viewController1_;
+    UIViewController* viewController2_;
+    
 }
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic,retain) UIWindow *window;
 
 @end

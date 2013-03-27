@@ -4,32 +4,30 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
+@synthesize window;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    //[_window makeKeyAndVisible];
+    CGRect bounds = [[UIScreen mainScreen] bounds];
+    window = [[UIWindow alloc] initWithFrame:bounds];
     
-    UIViewController* viewCtlA = [[MViewControllerA alloc] init];
-    UIViewController* viewCtlB = [[MViewControllerB alloc] init];
-    
-    [_window addSubview:viewCtlA.view];
-    [_window addSubview:viewCtlB.view];
-    
-    [_window bringSubviewToFront:viewCtlA.view];
-
-    [_window makeKeyAndVisible];
-    
-    return YES;
+    viewController1_ = [[MViewControllerA alloc] init];
+    viewController2_ = [[MViewControllerB alloc] init];
+    [window addSubview:viewController1_.view];
+    [window addSubview:viewController2_.view];
+   
+    [window bringSubviewToFront:viewController1_.view];
+    [window makeKeyAndVisible];
     
 }
 
 - (void)dealloc
 {
-    
-    [_window release];
+    [viewController1_ release];
+    [viewController2_ release];
+    [window release];
     [super dealloc];
 }
 
 @end
+

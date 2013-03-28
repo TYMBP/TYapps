@@ -6,12 +6,20 @@
 {
     [super viewDidLoad];
     
-    //UIImage *bgImage = [UIImage imageNamed:@"background.png"];
-    //UIImage *logoImage = [UIImage imageNamed:@"logoImage.png"];
-    //UIImageView *logo = [[UIImageView alloc] initWithImage:logoImage];
+    UIImage *bgImage = [UIImage imageNamed:@"background.png"];
+    UIImage *logoImage = [UIImage imageNamed:@"logoImage.png"];
+    UIImageView *logo = [[UIImageView alloc] initWithImage:logoImage];
+    NSLog(@");
+    [logo setFrame:CGRectMake(0, 0, logo.frame.size.width, logo.frame.size.height)];
+    
+    //NSLog(@"%@",hogesize);
     //UILabel* label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)]autorelease];
     //UILabel* label2 = [[[UILabel alloc] initWithFrame:CGRectZero]autorelease];
    
+    self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
+    [self.view addSubview:logo];
+    //[self.view addSubview:label];
+    //[self.view addSubview:label2];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button setTitle:@"login" forState:UIControlStateNormal];
     [button sizeToFit];
@@ -37,10 +45,6 @@
 //    NSLog(@"x=%f",label2.center.x);
 //    NSLog(@"x=%f",label2.center.x);
     
-    //self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
-    //[self.view addSubview:logo];
-    //[self.view addSubview:label];
-    //[self.view addSubview:label2];
     //[bgImage release];
     //[logo release];
     //[label release];

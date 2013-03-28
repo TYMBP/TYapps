@@ -6,8 +6,9 @@
 
 @synthesize window;
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //NSLog(@"applicatonDidFinishLaunching");
     CGRect bounds = [[UIScreen mainScreen] bounds];
     window = [[UIWindow alloc] initWithFrame:bounds];
     
@@ -18,7 +19,8 @@
    
     [window bringSubviewToFront:viewController1_.view];
     [window makeKeyAndVisible];
-    
+    NSLog(@"%@ ty", launchOptions);
+    return YES;
 }
 
 - (void)dealloc

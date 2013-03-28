@@ -2,6 +2,17 @@
 
 @implementation MViewControllerA
 
+- (UITextField*)makeTextField:(CGRect)rect text:(NSString*)text {
+    UITextField* textField = [[[UITextField alloc] init] autorelease];
+    [textField setText:text];
+    [textField setFrame:rect];
+    [textField setReturnKeyType:UIReturnKeyDone];
+    [textField setBackgroundColor:[UIColor whiteColor]];
+    [textField setBorderStyle:UITextBorderStyleRoundedRect];
+    [_textField01 setDelegate:self];;
+    return textField;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -9,17 +20,22 @@
     UIImage *bgImage = [UIImage imageNamed:@"background.png"];
     UIImage *logoImage = [UIImage imageNamed:@"logoImage.png"];
     UIImageView *logo = [[UIImageView alloc] initWithImage:logoImage];
-    NSLog(@");
-    [logo setFrame:CGRectMake(0, 0, logo.frame.size.width, logo.frame.size.height)];
+    CGPoint newPointL = self.view.center;
+    newPointL.y -= 200;
+    logo.center = newPointL;
     
+    //NSLog(@"ViewDidLoad:width:%f",self.view.frame.size.width);
+    //NSLog(@"ViewDidLoad:heght:%f",self.view.frame.size.height);
+    //a = self.view.frame.size.width/2;
     //NSLog(@"%@",hogesize);
-    //UILabel* label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)]autorelease];
-    //UILabel* label2 = [[[UILabel alloc] initWithFrame:CGRectZero]autorelease];
-   
+    //CGPoint newPointT = self.view.center;
+    //newPointT.y -=100;
+    //_textField01.center = newPointT;
+    //_textField01 =
+    _textField01 = [self makeTextField:CGRectMake(10, 200, 300, 32) text:@""];
+    
     self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
     [self.view addSubview:logo];
-    //[self.view addSubview:label];
-    //[self.view addSubview:label2];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button setTitle:@"login" forState:UIControlStateNormal];
     [button sizeToFit];
@@ -32,24 +48,7 @@
                action:@selector(buttonDidPush)
      forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
-    
-    //label.text = @"Test Test";
-    //label2.frame = CGRectMake(0, 0, 100, 100);
-    //label2.center = CGPointMake(100, 100);
-    //label2.backgroundColor = [UIColor redColor];
-    
-//    NSLog(@"x=%f",label2.frame.origin.x);
-//    NSLog(@"y=%f",label2.frame.origin.y);
-//    NSLog(@"width=%f",label2.frame.size.width);
-//    NSLog(@"height=%f",label2.frame.size.height);
-//    NSLog(@"x=%f",label2.center.x);
-//    NSLog(@"x=%f",label2.center.x);
-    
-    //[bgImage release];
-    //[logo release];
-    //[label release];
-    //[label2 release];
-    
+    [self.view addSubview:_textField01];
 }
 
 - (void)buttonDidPush {

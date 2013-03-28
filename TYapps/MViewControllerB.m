@@ -8,6 +8,7 @@
 
     //UIImage *bgImage = [UIImage imageNamed:@"background.png"];
     //UILabel* label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)]autorelease];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button setTitle:@"login" forState:UIControlStateNormal];

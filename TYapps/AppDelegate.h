@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
+    UIWindow *_window;
     UIViewController* viewController1_;
     UIViewController* viewController2_;
     

@@ -4,7 +4,7 @@
 
 @implementation AppDelegate
 
-@synthesize window;
+@synthesize window ;
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

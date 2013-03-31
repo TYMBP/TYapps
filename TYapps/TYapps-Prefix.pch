@@ -1,7 +1,3 @@
-//
-// Prefix header for all source files of the 'TYapps' target in the 'TYapps' project
-//
-
 #import <Availability.h>
 
 #ifndef __IPHONE_3_0
@@ -12,3 +8,5 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#define LOGIN_URL    @"http://yamato.main.jp/

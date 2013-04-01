@@ -3,3 +3,7 @@
 @interface MViewControllerB : UIViewController
 
 @end
+
+@interface ModalDialog : UIViewController
+
+@end

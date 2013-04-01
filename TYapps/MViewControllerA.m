@@ -51,10 +51,32 @@
     [self.view addSubview:_textField01];
 }
 
-- (void)buttonDidPush {
-    NSLog(@"push buttonA");
-    [self.view.window sendSubviewToBack:self.view];
+- (void)buttonDidPush
+{
+  NSString *jsonRequest = @"{\"username\":\"user\",\"password\":\"1234\"}";
+  NSLog(@"Request: %@",jsonRequest);
+  
+  NSURL *url = [NSURL URLWithString:@"http://yamada.dev/api/api.php"];
+  
+  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+  NSData *requestData= [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
+  [request setHTTPMethod:@"POST"];
+  [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+  [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+  [request setValue:[NSString stringWithFormat:@"%d",[requestData length]] forHTTPHeaderField:@"Content-Length"];
+  [request setHTTPBody:requestData];
+  
+  [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+//  NSLog(@"button push");
+  NSMutableData *d = [NSMutableData data];
+  [d appendData:data];
+  NSString *a = [[NSString alloc] initWithData:d encoding:NSASCIIStringEncoding];
+  
+  NSLog(@"Data: %@",a);
+}
 
 @end

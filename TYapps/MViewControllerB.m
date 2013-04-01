@@ -11,7 +11,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"login" forState:UIControlStateNormal];
+    [button setTitle:@"モーダル表示" forState:UIControlStateNormal];
     [button sizeToFit];
     CGPoint newPoint = self.view.center;
     newPoint.y += 50;
@@ -36,4 +36,34 @@
     NSLog(@"button push");
     [self.view.window sendSubviewToBack:self.view];
 }
+@end
+
+@implementation ModalDialog
+
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  
+  UILabel *label = [[[UILabel alloc] initWithFrame:self.view.bounds] autorelease];
+  label.backgroundColor = [UIColor blackColor];
+  label.textColor = [UIColor whiteColor];
+  label.textAlignment = NSTextAlignmentCenter;
+  label.text = @"モーダルテスト";
+  [self.view addSubview:label];
+  
+  UIButton *goodbyeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  [goodbyeButton setTitle:@"GoodBye" forState:UIControlStateNormal];
+  [goodbyeButton sizeToFit];
+  CGPoint newPoint = self.view.center;
+  newPoint.y += 80;
+  goodbyeButton.center = newPoint;
+  [goodbyeButton addTarget:self action:@selector(goodbyeDidPush) forControlEvents:UIControlEventTouchUpInside];
+  [self.view addSubview:goodbyeButton];
+}
+
+- (void)goodbyeDidPush
+{
+  [self dismissModalViewControllerAnimated:YES];
+}
+
 @end

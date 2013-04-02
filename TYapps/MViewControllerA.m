@@ -1,6 +1,8 @@
 #import "MViewControllerA.h"
 
 #define LOGIN_FLG  @"OK"
+#define BTN_LOGIN  1
+
 
 @implementation MViewControllerA
 
@@ -26,6 +28,16 @@
   [_textField02 setDelegate:self];;
   return textField2;
 }
+
+- (UIButton *)makeButton:(CGRect)rect text:(NSString *)text tag:(int)tag {
+  UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  [button setFrame:rect];
+  [button setTitle:text forState:UIControlStateNormal];
+  [button setTag:tag];
+  [button addTarget:self action:@selector(buttonDidPush) forControlEvents:UIControlEventTouchUpInside];
+  return button;
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
   
@@ -48,28 +60,34 @@
   _textField02 = [self makeTextFieldB:CGRectMake(10, 150, 300, 32) text:@""];
   self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
   [self.view addSubview:logo];
-  UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-  [button setTitle:@"login" forState:UIControlStateNormal];
-  [button sizeToFit];
-  CGPoint newPoint = self.view.center;
-  newPoint.y += 50;
-  button.center = newPoint;
-  button.autoresizingMask =
-  UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-  [button addTarget:self
-             action:@selector(buttonDidPush)
-   forControlEvents:UIControlEventTouchUpInside];
-  [self.view addSubview:button];
+//  UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//  [button setTitle:@"login" forState:UIControlStateNormal];
+//  [button sizeToFit];
+//  CGPoint newPoint = self.view.center;
+//  newPoint.y += 50;
+//  button.center = newPoint;
+//  button.autoresizingMask =
+//  UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+//  [button addTarget:self
+//             action:@selector(buttonDidPush)
+//   forControlEvents:UIControlEventTouchUpInside];
+  UIButton *btn = [self makeButton:CGRectMake(100, 200, 90, 40) text:@"login" tag:BTN_LOGIN];
+  [self.view addSubview:btn];
   [self.view addSubview:_textField01];
   [self.view addSubview:_textField02];
 }
 
 - (void)buttonDidPush
 {
-  NSString *jsonRequest = @"{\"username\":\"yamada\",\"password\":\"yamada123\"}";
+  NSMutableDictionary *mutableDic = [NSMutableDictionary dictionary];
+  [mutableDic setValue:_textField01.text forKey:@"username"];
+  [mutableDic setValue:_textField02.text forKey:@"passwd"];
+  NSLog(@"t-yamada: %@", mutableDic);
+
+  NSString *jsonRequest = @"{\"username\":\"yamada\",\"password\":\"yamada10\"}";
   NSLog(@"Request: %@",jsonRequest);
   
-  NSURL *url = [NSURL URLWithString:@"http://yamada.dev/api_json/api.php"];
+  NSURL *url = [NSURL URLWithString:@"http://yamada.dev/api/json/api.php"];
   
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
   NSData *requestData= [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];

@@ -10,3 +10,5 @@
 #endif
 
 #define LOGIN_URL    @"http://yamato.main.jp/
+
+

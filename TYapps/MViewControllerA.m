@@ -25,7 +25,8 @@
   [textField2 setReturnKeyType:UIReturnKeyDone];
   [textField2 setBackgroundColor:[UIColor whiteColor]];
   [textField2 setBorderStyle:UITextBorderStyleRoundedRect];
-  [_textField02 setDelegate:self];;
+  textField2.secureTextEntry = YES;
+  [_textField02 setDelegate:self];
   return textField2;
 }
 
@@ -61,8 +62,8 @@
   //newPointT.y -=100;
   //_textField01.center = newPointT;
   //_textField01 =
-  _textField01 = [self makeTextFieldA:CGRectMake(10, 100, 300, 32) text:@""];
-  _textField02 = [self makeTextFieldB:CGRectMake(10, 150, 300, 32) text:@""];
+  _textField01 = [self makeTextFieldA:CGRectMake(10, 100, 300, 32) text:@"yamada"];
+  _textField02 = [self makeTextFieldB:CGRectMake(10, 150, 300, 32) text:@"yamada10"];
   self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
   [self.view addSubview:logo];
 //  UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -107,7 +108,7 @@
 //  NSString *jsonRequest = @"{\"username\":\"yamada\",\"password\":\"yamada10\"}";
 //  NSLog(@"Request: %@",jsonRequest);
   
-  NSURL *url = [NSURL URLWithString:@"http://yamada.dev/api_json/api.php"];
+  NSURL *url = [NSURL URLWithString:@"http://yamada.dev/api/json/api.php"];
   
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
 //  NSData *requestData= [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];

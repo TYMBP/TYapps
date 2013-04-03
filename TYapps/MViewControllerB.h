@@ -4,9 +4,6 @@
 
 @end
 
-@interface ModalDialog : UIViewController {
-  id delegate;
-}
-@property(nonatomic,retain)id delegate;
+@interface ModalDialog : UIViewController
 
 @end

@@ -11,7 +11,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"モーダル表示" forState:UIControlStateNormal];
+    [button setTitle:@"click" forState:UIControlStateNormal];
     [button sizeToFit];
     CGPoint newPoint = self.view.center;
     newPoint.y += 50;
@@ -22,23 +22,25 @@
                action:@selector(buttonDidPush)
      forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
-    
     //label.text = @"ログイン";
     
     //self.view.backgroundColor=[UIColor colorWithPatternImage: bgImage];
     //[self.view addSubview:label];
     //[bgImage release];
     //[label release];
-
 }
 
 -(void)buttonDidPush {
-    NSLog(@"button push");
-    [self.view.window sendSubviewToBack:self.view];
+  NSLog(@"button push");
+  //[self.view.window sendSubviewToBack:self.view];
+//  [self presentModalViewController: animated:YES];
+  ModalDialog *addController = [[ModalDialog alloc] initWithNibName:@"ModalView" bundle:nil];
+  addController.delegate = self;
+  [self presentModalViewController:addController animated:YES];
 }
 @end
 
-@implementation ModalDialog
+@implementation ModalDialog 
 
 - (void)viewDidLoad
 {

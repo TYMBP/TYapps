@@ -10,7 +10,7 @@
   UITextField* textField1 = [[[UITextField alloc] init] autorelease];
   [textField1 setText:text];
   [textField1 setFrame:rect];
-  [textField1 setReturnKeyType:UIReturnKeyDone];
+  [textField1 setReturnKeyType:UIReturnKeyNext];
   [textField1 setBackgroundColor:[UIColor whiteColor]];
   [textField1 setBorderStyle:UITextBorderStyleRoundedRect];
   [_textField01 setDelegate:self];;
@@ -28,6 +28,11 @@
   [_textField02 setDelegate:self];;
   return textField2;
 }
+
+//- (bool)textFieldShouldReturn:(UITextField *)textField {
+//  [_textField02 resignFirstResponder];
+//  return YES;
+//}
 
 - (UIButton *)makeButton:(CGRect)rect text:(NSString *)text tag:(int)tag {
   UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -79,18 +84,34 @@
 
 - (void)buttonDidPush
 {
+  [_textField02 resignFirstResponder];
   NSMutableDictionary *mutableDic = [NSMutableDictionary dictionary];
   [mutableDic setValue:_textField01.text forKey:@"username"];
   [mutableDic setValue:_textField02.text forKey:@"passwd"];
   NSLog(@"t-yamada: %@", mutableDic);
-
-  NSString *jsonRequest = @"{\"username\":\"yamada\",\"password\":\"yamada10\"}";
-  NSLog(@"Request: %@",jsonRequest);
   
-  NSURL *url = [NSURL URLWithString:@"http://yamada.dev/api/json/api.php"];
+  NSError *error = nil;
+  NSData *json_Data = [NSJSONSerialization dataWithJSONObject:mutableDic options:kNilOptions error:&error];
+  NSString *json_str = [[NSString alloc] initWithData:json_Data encoding:NSUTF8StringEncoding];
+  
+//  NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[@"[1,2,3,[\"foo\",\"bar\"]]" dataUsingEncoding:NSUTF8StringEncoding]
+//                                                       options:kNilOptions
+//                                                         error:&error];
+  NSLog(@"t-yamada %@ %@",json_str,error);
+  
+//  NSData *json = [NSJSONSerialization dataWithJSONObject:json
+//                                                     options:kNilOptions
+//                                                       error:&error];
+//  NSLog(@"t-yamada %@ %@",[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding],error);
+  
+//  NSString *jsonRequest = @"{\"username\":\"yamada\",\"password\":\"yamada10\"}";
+//  NSLog(@"Request: %@",jsonRequest);
+  
+  NSURL *url = [NSURL URLWithString:@"http://yamada.dev/api_json/api.php"];
   
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-  NSData *requestData= [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
+//  NSData *requestData= [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
+  NSData *requestData= [NSData dataWithBytes:[json_str UTF8String]  length:[json_str length]];
   [request setHTTPMethod:@"POST"];
   [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
   [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -114,7 +135,7 @@
     //NSLog(@"test OK");
     [self.view.window sendSubviewToBack:self.view];
   }
-
+  
   
 }
 
